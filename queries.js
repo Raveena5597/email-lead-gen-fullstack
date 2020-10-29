@@ -37,7 +37,6 @@ const sendEmail = (request, response) => {
         if (error) {
             throw error
         }
-        console.log(results.rows)
         results.rows.forEach(row => {
             sgMail.setApiKey(process.env.SENDGRID_API_KEY)
             const msg = {
@@ -57,7 +56,7 @@ const sendEmail = (request, response) => {
                     console.error(error)
                 })
         })
-        response.status(201).json("Email sent!")
+        response.status(201).json(results.rows)
     })
 }
 

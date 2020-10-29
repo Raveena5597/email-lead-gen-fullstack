@@ -1,11 +1,10 @@
 const Pool = require('pg').Pool
-const pool = new Pool({
-    user: 'me',
-    host: 'localhost',
-    database: 'feba',
-    password: '1234',
-    port: 5432,
-})
+let connectionString = {
+    connectionString: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false }
+};
+const pool = new Pool(connectionString)
+
 const getUsers = (request, response) => {
     pool.query('SELECT * FROM useraccounts', (error, results) => {
         if (error) {

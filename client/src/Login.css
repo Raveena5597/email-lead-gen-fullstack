@@ -1,0 +1,45 @@
+.formDiv {
+  border-radius: 5px;
+  background-color: white;
+}
+
+input[type="text"],
+select {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type="date"],
+select {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  width: 6%;
+  background-color: white;
+  color: rgb(3, 2, 2);
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: rgba(36, 202, 202, 0.945);
+}
+.showError {
+  border-color: #a94442 !important;
+  color: #a94442 !important;
+  margin-bottom: 15px;
+}

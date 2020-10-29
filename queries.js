@@ -4,7 +4,6 @@ let connectionString = {
     ssl: { rejectUnauthorized: false }
 };
 const pool = new Pool(connectionString)
-
 const getUsers = (request, response) => {
     pool.query('SELECT * FROM useraccounts', (error, results) => {
         if (error) {
@@ -16,12 +15,12 @@ const getUsers = (request, response) => {
 const createUser = (request, response) => {
     const { email, name, dob } = request.body
 
-    pool.query('INSERT INTO users (email, name, dob) VALUES ($1, $2, $3)', [email, name, dob], (error, results) => {
+    pool.query('INSERT INTO useraccounts (email, name, dob) VALUES ($1, $2, $3)', [email, name, dob], (error, results) => {
         if (error) {
-            response.status(400).send(`Oops! Some error occured. ${error} ${request.body}`)
+            response.status(400).json(`Oops! Some error occured.`)
             return
         }
-        response.status(201).send(`User added successfully.`)
+        response.status(201).json(`User added successfully.`)
     })
 }
 

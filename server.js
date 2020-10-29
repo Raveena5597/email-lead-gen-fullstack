@@ -2,7 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const db = require('./queries')
-const port = process.env.PORT || 3000;
+const path = require('path');
+const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json())
 app.use(
@@ -10,13 +11,14 @@ app.use(
         extended: true,
     })
 )
+app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/', (request, response) => {
-    response.json({ info: 'Please use the correct path.' })
-})
+app.get('/api/users', db.getUsers)
+app.post('/api/users', db.createUser)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/client/build/index.html'));
+});
 
-app.get('/users', db.getUsers)
-app.post('/users', db.createUser)
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)
 })

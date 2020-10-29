@@ -15,6 +15,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/api/users', db.getUsers)
 app.post('/api/users', db.createUser)
+app.get('/api/sendemail', db.sendEmail)
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });

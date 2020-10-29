@@ -37,6 +37,7 @@ const sendEmail = (request, response) => {
         if (error) {
             throw error
         }
+        console.log(results.rows)
         results.rows.forEach(row => {
             sgMail.setApiKey(process.env.SENDGRID_API_KEY)
             const msg = {
